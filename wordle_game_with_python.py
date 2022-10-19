@@ -33,9 +33,9 @@ keyboard = [
 ]
 
 #Color codes to print colored text
-green = '\033[1;30;42m '
-yellow = '\033[1;30;43m '
-red = '\033[1;30;41m '
+green = '\033[1;37;42m '
+yellow = '\033[1;37;43m '
+red = '\033[1;37;41m '
 reset = ' \033[0;0m'
 
 #Random word from the Word List
@@ -109,10 +109,10 @@ while attempts < 6:
     attempts += 1
 
     #Checking how many attempts left
-    if won == False and attempts == 5:
+    if won == False and 4 <= attempts < 6:
       print(f'{red}Be careful! Only {6-attempts} attempts left!{reset}')
       print()
-    elif won == False and attempts < 6:
+    elif won == False and 1 <= attempts < 4:
       print(f'{yellow}{6-attempts} attempts left!{reset}')
       print()
 
