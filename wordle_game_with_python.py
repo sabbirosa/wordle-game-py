@@ -1,5 +1,6 @@
 import random
-from turtle import fd
+
+from word_list import word_list
 
 
 #A functions for calculate frequency of letters
@@ -35,15 +36,8 @@ yellow = '\033[1;30;43m '
 red = '\033[1;30;41m '
 reset = ' \033[0;0m'
 
-# I've choosen 25 random words from the upper list with a for loop.
-word_list = ['smart', 'brain', 'apply', 'extra', 'acute',
-             'money', 'going', 'title', 'steam', 'three',
-             'shirt', 'basis', 'worry', 'spoke', 'cream',
-             'built', 'noted', 'every', 'youth', 'trial',
-             'cross', 'store', 'those', 'chart', 'fixed']
-
 #Random word from the Word List
-random_word = word_list[random.randint(1, len(word_list)-1)].upper()
+random_word = random.choice(word_list)
 
 #Colored random word from the function of print winning word
 win_random_word = win_random_word(random_word)
@@ -52,10 +46,10 @@ win_random_word = win_random_word(random_word)
 random_freq = list(freq_cal(random_word))
 
 #Main logic of the game
-attemps = 0
+attempts = 0
 won = False
 
-while attemps < 6:
+while attempts < 6:
 
     print_word = ""
     user_word = input("Enter a 5 letter word: ").upper()
@@ -104,15 +98,22 @@ while attemps < 6:
                 won = True
                 break
 
-            attemps += 1
+            attempts += 1
+
+            #Checking how many attempts left
+            if won == False:
+                print(f'{yellow}Only {6-attempts-1} attempts left!{reset}')
+                print()
 
     else:
         print(f'{red}You are only allowed to enter a 5 letter word!{reset}')
         won = None
         break
 
+
+
 #Checking loss or win
 if won == True:
-    print(f'{green}Congratulations! You have won the game in {attemps+1} attemps.{reset}')
+    print(f'{green}Congratulations! You have won the game in {attempts+1} attempts.{reset}')
 elif won == False:
     print(f'{red}You lost! Try again.{reset}')
