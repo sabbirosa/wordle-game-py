@@ -102,7 +102,7 @@ while attempts < 6:
 
             #Checking how many attempts left
             if won == False:
-                print(f'{yellow}Only {6-attempts-1} attempts left!{reset}')
+                print(f'{yellow}Only {6-attempts} attempts left!{reset}')
                 print()
 
     else:
